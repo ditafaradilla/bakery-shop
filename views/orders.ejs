@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Daftar Pesanan</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>Daftar Pesanan</h1>
+    <p class="subtitle">Sweet Bakery Orders</p>
+
+    <table>
+        <tr>
+            <th>Nama</th>
+            <th>Produk</th>
+            <th>Jumlah</th>
+            <th>Total</th>
+            <th>Aksi</th>
+        </tr>
+
+        <% orders.forEach(order => { %>
+        <tr>
+            <td><%= order.nama %></td>
+            <td><%= order.produk %></td>
+            <td><%= order.jumlah %></td>
+            <td>Rp<%= order.total.toLocaleString("id-ID") %></td>
+            <td>
+                <a href="/edit/<%= order.id %>">Edit</a>
+                |
+                <a href="/delete/<%= order.id %>" onclick="return confirm('Yakin mau hapus?')">Hapus</a>
+            </td>
+        </tr>
+        <% }) %>
+    </table>
+
+    <a href="/" class="btn-back">Tambah Pesanan</a>
+</div>
+
+</body>
+</html>
